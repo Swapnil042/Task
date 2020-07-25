@@ -4,6 +4,8 @@ const multer = require('multer')
 const auth = require('../middleware/auth')
 const router = new express.Router()
 
+// const sharp = require('sharp')
+
 router.post('/users', async (req, res) => {
     const user = new User(req.body)
 
@@ -93,6 +95,7 @@ const upload = multer({
 })
 
 router.post('/user/me/avatar', auth,upload.single('avatar'), async (req,res)=>{
+    // const buffer = await sharp(req.file.buffer).resize({width: 250, height: 250}).png().toBuffer()
     req.user.avatar = req.file.buffer   
     await req.user.save()
     res.send()
@@ -105,5 +108,19 @@ router.delete('/user/me/avatar', auth, async (req,res)=>{
     await req.user.save()
     res.send()
 })
+
+router.get('/users/:id/avatar', async (req,res)=>{
+    try{
+        const user = await User.findById(req.params.id)
+        if(!user || !user.avatar){
+            throw new Error()
+        }
+        res.set('Content-Type', 'image/png')
+        res.send(user.avatar)
+    }catch(e){
+        res.status(404).send()
+    }
+})
+
 
 module.exports = router
