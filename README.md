@@ -9,7 +9,7 @@ env-cmd npm package is used as a development dependency to manage environmental 
 Jest testing framework is used to test codes.
 
 Tools:
-    Node.js, Express.js, MongoDB, Postman
+Node.js, Express.js, MongoDB, Postman
    
 npm packages: mongoose, bcryptjs, validator,
 multer, sharp, jsonwebtoken, @sendgrid/mail,
