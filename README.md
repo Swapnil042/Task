@@ -15,5 +15,8 @@ npm packages: mongoose, bcryptjs, validator,
 multer, sharp, jsonwebtoken, @sendgrid/mail,
 env-cmd, nodemon, mongoose
 
+
 Open the project and run the command "npm install" and all set.
 If any error shows up then delete the package-lock.json and try "npm install" again.
+
+The request folder contains a json file. Import this on 'Postman'- an API checking software- and you will get every request endpoints.
